@@ -501,7 +501,6 @@ section.testimonials:after {
 .testimonial-head h2{
   display: inline-block;
   float: left;
-   position: absolute;
    left: 16%;
    top: 0px;
 }
@@ -520,12 +519,19 @@ section.testimonials:after {
 
 .background {
   display: flex;
-  
+  flex-wrap: wrap;
+}
+
+
+@media (max-width: 800px) {
+  .container-contact, .thumbs {
+    flex: 100%;
+  }
 }
 
 .container-contact {
   flex: 0 1 auto;
-  margin-left: 11%;
+  margin-left: 10%;
   margin-top: 5%;
   padding: 10px;
   margin-bottom: 20px;
