@@ -64,7 +64,7 @@ export const careerData: CareerExperience[] = [
     technologies: ["HIPAA Compliance", "Healthcare APIs", "SMS/Email Systems", "Payment Processing", "Queue Management", "Agile", "Jira", "Figma"],
     environment: {
       model: "healthcare-office.glb",
-      atmosphere: "clinical",
+      atmosphere: "corporate",
       colors: ["#0f172a", "#1e293b", "#334155"]
     },
     transitionStory: "Leading digital transformation in healthcare through patient-centric product solutions"
@@ -75,7 +75,7 @@ export const careerData: CareerExperience[] = [
     role: "Product Manager",
     duration: "Jun 2023 – Mar 2025",
     location: "Business Operations and Transformation",
-    type: "enterprise",
+    type: "corporate",
     teamSize: 12,
     responsibilities: [
       "Launch Vodafone E-SIM Support System across 45+ European countries",
@@ -132,7 +132,7 @@ export const careerData: CareerExperience[] = [
     technologies: ["E-SIM Technology", "M&A Systems", "Multi-language Support", "Agile", "Stakeholder Management", "Competitive Analysis", "Resource Optimization"],
     environment: {
       model: "telecom-office.glb",
-      atmosphere: "enterprise",
+      atmosphere: "corporate",
       colors: ["#1a1a2e", "#16213e", "#0f3460"]
     },
     transitionStory: "Led digital transformation initiatives across European markets and M&A operations"
@@ -143,7 +143,7 @@ export const careerData: CareerExperience[] = [
     role: "Applications Engineer 1",
     duration: "Jun 2019 – Jul 2021",
     location: "Aconex – Construction and Engineering",
-    type: "enterprise",
+    type: "corporate",
     teamSize: 4,
     responsibilities: [
       "Design and implement performance optimization features and APIs for B2B SaaS product",
@@ -200,7 +200,7 @@ export const careerData: CareerExperience[] = [
     technologies: ["B2B SaaS", "Microservices", "CI/CD", "API Development", "Performance Optimization", "Legacy Refactoring", "Automated Testing", "Global Deployment"],
     environment: {
       model: "oracle-office.glb",
-      atmosphere: "technical",
+      atmosphere: "creative",
       colors: ["#2d3748", "#4a5568", "#718096"]
     },
     transitionStory: "Built foundation in enterprise software development and technical architecture"

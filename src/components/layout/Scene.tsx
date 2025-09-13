@@ -1,16 +1,16 @@
 import { useRef, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Environment, OrbitControls, Text3D, Float } from '@react-three/drei';
+import { Environment, OrbitControls, Float } from '@react-three/drei';
 import * as THREE from 'three';
 import { usePortfolioStore } from '../../store/portfolioStore';
 
 export function Scene() {
   const sceneRef = useRef<THREE.Group>(null);
   const particlesRef = useRef<THREE.Points>(null);
-  const { performanceMode, currentSection } = usePortfolioStore();
+  const { performanceMode } = usePortfolioStore();
   const [scrollVelocity, setScrollVelocity] = useState(0);
   const lastScrollY = useRef(0);
-  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const scrollTimeout = useRef<number | null>(null);
 
   // Track scroll velocity
   useEffect(() => {
@@ -128,7 +128,7 @@ function ParticleSystem({ count = 500 }: { count?: number }) {
   const particlesRef = useRef<THREE.Points>(null);
   const [scrollVelocity, setScrollVelocity] = useState(0);
   const lastScrollY = useRef(0);
-  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const scrollTimeout = useRef<number | null>(null);
 
   // Track scroll velocity for this component too
   useEffect(() => {
@@ -156,7 +156,7 @@ function ParticleSystem({ count = 500 }: { count?: number }) {
     };
   }, []);
   
-  useFrame((state) => {
+  useFrame(() => {
     if (particlesRef.current) {
       const baseSpeed = 0.001;
       const scrollMultiplier = scrollVelocity > 0 ? 0.3 : 1; // 70% slower when scrolling

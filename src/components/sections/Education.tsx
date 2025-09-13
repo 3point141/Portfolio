@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { gsap } from 'gsap';
 import { usePortfolioStore } from '../../store/portfolioStore';
+import raipurLogo from '../../assets/raipur_logo.jpg';
+import vitLogo from '../../assets/vit_logo.jpg';
 // Your actual education data
 const educationData = [
   {
@@ -195,7 +197,7 @@ export function Education() {
                         <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
                           <div className="w-full h-full bg-white rounded-lg p-2 shadow-lg">
                             <img 
-                              src="/src/assets/raipur_logo.jpg" 
+                              src={raipurLogo} 
                               alt="IIM Raipur Logo" 
                               className="w-full h-full object-contain rounded-md"
                             />
@@ -206,7 +208,7 @@ export function Education() {
                         <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
                           <div className="w-full h-full bg-white rounded-lg p-2 shadow-lg">
                             <img 
-                              src="/src/assets/vit_logo.jpg" 
+                              src={vitLogo} 
                               alt="VIT Vellore Logo" 
                               className="w-full h-full object-contain rounded-md"
                             />

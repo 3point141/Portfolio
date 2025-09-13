@@ -215,7 +215,7 @@ export function InternshipExperiences() {
         
         {/* Internship Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {internshipData.map((internship, index) => (
+          {internshipData.map((internship) => (
             <div 
               key={internship.id} 
               className="group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 rounded-3xl p-8 border border-gray-700/50 hover:border-primary-500/50 hover:shadow-2xl hover:shadow-primary-500/20 transition-all duration-500 cursor-pointer overflow-hidden"

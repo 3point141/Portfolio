@@ -70,7 +70,7 @@ const initialState = {
 
 export const usePortfolioStore = create<PortfolioState>()(
   devtools(
-    (set, get) => ({
+    (set) => ({
       ...initialState,
       
       setCurrentSection: (section: number) => 

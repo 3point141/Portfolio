@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { usePortfolioStore } from '../../store/portfolioStore';
+import linkedinPhoto from '../../assets/LinkeinPhoto.png';
 
 const sections = [
   { id: 'hero', name: 'Home', number: '01' },
@@ -12,7 +13,7 @@ const sections = [
 ];
 
 export function Navigation() {
-  const { currentSection, scrollProgress } = usePortfolioStore();
+  const { currentSection } = usePortfolioStore();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -45,7 +46,7 @@ export function Navigation() {
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 rounded-xl overflow-hidden shadow-lg">
                 <img 
-                  src="/src/assets/LinkeinPhoto.png" 
+                  src={linkedinPhoto} 
                   alt="Aman Kumar" 
                   className="w-full h-full object-cover"
                 />

@@ -217,7 +217,7 @@ export function Projects() {
               className="flex transition-transform duration-700 ease-in-out"
               style={{ transform: `translateX(-${currentProject * 100}%)` }}
             >
-              {projectsData.map((project, index) => (
+              {projectsData.map((project) => (
                 <div key={project.id} className="w-full flex-shrink-0">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 lg:p-12">
                     {/* Left Side - Project Info */}

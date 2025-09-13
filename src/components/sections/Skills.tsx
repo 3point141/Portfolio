@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { usePortfolioStore } from '../../store/portfolioStore';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, Text, OrbitControls } from '@react-three/drei';
+import { Text, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 // All Skills Data
@@ -96,7 +96,7 @@ function SkillNode({ position, skill, color, hoveredNode, setHoveredNode }: {
         anchorX="center"
         anchorY="middle"
         maxWidth={2.5}
-        opacity={isHovered ? 1 : 0.8}
+        material-opacity={isHovered ? 1 : 0.8}
         renderOrder={1000}
         material-transparent={true}
         material-depthTest={false}

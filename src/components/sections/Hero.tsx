@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { gsap } from 'gsap';
 import { usePortfolioStore } from '../../store/portfolioStore';
+import linkedinPhoto from '../../assets/LinkeinPhoto.png';
+import resumePDF from '../../assets/Aman_Kumar_Product_Manager.pdf';
 
 export function Hero() {
   const { ref, inView } = useInView({
@@ -199,7 +201,7 @@ export function Hero() {
               >
                 {/* Profile photo */}
                 <img 
-                  src="/src/assets/LinkeinPhoto.png" 
+                  src={linkedinPhoto} 
                   alt="Aman Kumar" 
                   className="w-full h-full object-cover"
                 />
@@ -235,6 +237,15 @@ export function Hero() {
               className="px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               View My Work
+            </button>
+            <button 
+              onClick={() => {
+                trackInteraction('hero_view_resume');
+                window.open(resumePDF, '_blank');
+              }}
+              className="px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-800 text-white font-semibold rounded-lg hover:from-gray-600 hover:to-gray-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border border-gray-600/50"
+            >
+              View Resume
             </button>
             <button 
               onClick={() => {
