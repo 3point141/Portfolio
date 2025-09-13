@@ -2,7 +2,59 @@ import { useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { gsap } from 'gsap';
 import { usePortfolioStore } from '../../store/portfolioStore';
-import { educationData } from '../../data/education';
+// Your actual education data
+const educationData = [
+  {
+    id: "mba",
+    institution: "Indian Institute of Management (IIM), Raipur",
+    degree: "Master of Business Administration",
+    field: "Strategy and Operations",
+    duration: "2021-2023",
+    location: "Raipur, India",
+    gpa: "81.30%",
+    achievements: [
+      "Dean's List 2022 (Top 5%)",
+      "Elected Batch Representative",
+      "Strategy and Operations Excellence",
+      "Leadership in Academic Excellence",
+      "Outstanding Performance Recognition"
+    ],
+    relevantCourses: [
+      "Strategic Management",
+      "Operations Management",
+      "Business Analytics",
+      "Supply Chain Management",
+      "Corporate Strategy",
+      "Decision Making",
+      "Organizational Behavior",
+      "Financial Management"
+    ],
+    buildingModel: "iim-raipur-building.glb"
+  },
+  {
+    id: "bachelors",
+    institution: "Vellore Institute of Technology, Vellore",
+    degree: "Bachelor of Technology",
+    field: "Electronics and Communication",
+    duration: "2015-2019",
+    location: "Vellore, India",
+    gpa: "89.40%",
+    achievements: [
+      "Recognized as Special Achiever for academics and competitions",
+      "Elected Tech. Head of Club",
+      "Academic Excellence Award",
+      "Technical Innovation Recognition",
+      "Leadership in Student Activities"
+    ],
+    relevantCourses: [
+      "Data Structures and Algorithms",
+      "Machine Learning",
+      "Communication Systems",
+      "Operating Systems"
+    ],
+    buildingModel: "vit-building.glb"
+  }
+];
 
 export function Education() {
   const { ref, inView } = useInView({
@@ -77,23 +129,22 @@ export function Education() {
                 {/* Institution Card */}
                 <div className="flex-1 w-full lg:w-1/2">
                   <div className="glass-effect rounded-2xl p-8 h-full">
-                    <div className="flex items-start justify-between mb-6">
-                      <div>
-                        <h3 className="text-2xl font-bold text-white mb-2">
-                          {education.institution}
-                        </h3>
-                        <p className="text-primary-400 font-semibold">
-                          {education.degree}
-                        </p>
-                        <p className="text-gray-400 text-sm">
-                          {education.field}
-                        </p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-sm text-gray-400">{education.duration}</div>
-                        <div className="text-sm text-gray-400">{education.location}</div>
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-white mb-2">
+                        {education.degree}
+                      </h3>
+                      <p className="text-gray-400 text-sm mb-4">
+                        {education.field}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        <div className="px-3 py-1 bg-primary-500/10 border border-primary-500/20 rounded-full text-xs text-primary-400">
+                          {education.duration}
+                        </div>
+                        <div className="px-3 py-1 bg-gray-500/10 border border-gray-500/20 rounded-full text-xs text-gray-400">
+                          {education.location}
+                        </div>
                         {education.gpa && (
-                          <div className="text-sm text-primary-400 font-semibold">
+                          <div className="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs text-green-400">
                             GPA: {education.gpa}
                           </div>
                         )}
@@ -135,18 +186,38 @@ export function Education() {
                   <div className="w-8 h-8 bg-primary-500 rounded-full border-4 border-dark-900 shadow-lg" />
                 </div>
 
-                {/* 3D Building Placeholder */}
+                {/* Institution Logo */}
                 <div className="flex-1 w-full lg:w-1/2">
                   <div className="glass-effect rounded-2xl p-8 h-64 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
-                      </div>
-                      <h4 className="text-lg font-semibold text-white mb-2">3D Building</h4>
+                      {education.id === "mba" ? (
+                        // IIM Raipur Logo
+                        <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+                          <div className="w-full h-full bg-white rounded-lg p-2 shadow-lg">
+                            <img 
+                              src="/src/assets/raipur_logo.jpg" 
+                              alt="IIM Raipur Logo" 
+                              className="w-full h-full object-contain rounded-md"
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        // VIT Logo
+                        <div className="w-24 h-24 mx-auto mb-4 flex items-center justify-center">
+                          <div className="w-full h-full bg-white rounded-lg p-2 shadow-lg">
+                            <img 
+                              src="/src/assets/vit_logo.jpg" 
+                              alt="VIT Vellore Logo" 
+                              className="w-full h-full object-contain rounded-md"
+                            />
+                          </div>
+                        </div>
+                      )}
+                      <h4 className="text-lg font-semibold text-white mb-2">
+                        {education.id === "mba" ? "IIM Raipur" : "VIT Vellore"}
+                      </h4>
                       <p className="text-sm text-gray-400">
-                        {education.buildingModel} will be rendered here
+                        {education.institution}
                       </p>
                     </div>
                   </div>
