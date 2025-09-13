@@ -3,164 +3,206 @@ import type { CareerExperience } from '../types/portfolio';
 export const careerData: CareerExperience[] = [
   {
     id: "current-role",
-    company: "TechCorp Inc.",
-    role: "Senior Product Manager",
-    duration: "2022-Present",
-    location: "San Francisco, CA",
+    company: "Incubyte Consulting LLP",
+    role: "Product Manager",
+    duration: "Mar 2023 – Current",
+    location: "US Healthcare",
     type: "corporate",
-    teamSize: 12,
+    teamSize: 8,
     responsibilities: [
-      "Lead product strategy for B2B SaaS platform serving 50k+ users",
-      "Manage cross-functional team of 12 engineers, designers, and analysts",
-      "Drive product roadmap and feature prioritization using data-driven insights",
-      "Collaborate with Sales and Customer Success on go-to-market strategies",
-      "Establish product analytics framework and KPIs",
-      "Conduct user research and competitive analysis"
+      "Scale 5 healthcare products (Check-in, Arrive, Telehealth, Payments, Kiosks) to enable 1M+ patient interactions annually",
+      "Lead cross-functional teams to deliver HIPAA-compliant, user-centric solutions",
+      "Drive each product's North Star metric adoption and business impact",
+      "Design and implement patient experience improvements across multiple touchpoints",
+      "Manage product roadmap and feature prioritization for healthcare workflows",
+      "Collaborate with clinical teams and stakeholders on product requirements"
     ],
     achievements: [
       {
-        metric: "User Growth",
-        value: "150%",
-        impact: "Increased monthly active users from 20k to 50k",
-        icon: "trending-up",
-        animationType: "counter"
-      },
-      {
-        metric: "Revenue Impact",
-        value: "$2.3M",
-        impact: "Annual recurring revenue increase",
-        icon: "dollar-sign",
-        animationType: "counter"
-      },
-      {
-        metric: "Feature Adoption",
-        value: "85%",
-        impact: "New feature adoption rate within 90 days",
+        metric: "Patient Interactions",
+        value: "1M+",
+        impact: "Annual patient interactions enabled across 5 products",
         icon: "users",
+        animationType: "counter"
+      },
+      {
+        metric: "Visual Evidence Uploads",
+        value: "40K+",
+        impact: "Uploads in first month of Check-in App launch",
+        icon: "upload",
+        animationType: "counter"
+      },
+      {
+        metric: "Wait Time Reduction",
+        value: "20%",
+        impact: "Reduced patient wait times through Dynamic Form Collection",
+        icon: "clock",
+        animationType: "bar"
+      },
+      {
+        metric: "Payment Visibility",
+        value: "100%",
+        impact: "Transaction visibility improvement for Pay at Front Desk",
+        icon: "eye",
         animationType: "pie"
       },
       {
-        metric: "Customer Satisfaction",
-        value: "4.8/5",
-        impact: "NPS score improvement from 6 to 32",
-        icon: "star",
-        animationType: "bar"
-      }
-    ],
-    technologies: ["Amplitude", "Mixpanel", "Figma", "Jira", "Slack", "SQL", "Python", "Tableau"],
-    environment: {
-      model: "modern-office.glb",
-      atmosphere: "corporate",
-      colors: ["#0f172a", "#1e293b", "#334155"]
-    },
-    transitionStory: "Joined to scale product from PMF to growth stage"
-  },
-  {
-    id: "startup-role",
-    company: "InnovateTech",
-    role: "Product Manager",
-    duration: "2020-2022",
-    location: "San Francisco, CA",
-    type: "startup",
-    teamSize: 8,
-    responsibilities: [
-      "Launched mobile app from concept to 100K downloads",
-      "Built and mentored 8-person product team",
-      "Secured $2M in funding through compelling product vision",
-      "Established product-market fit through user research",
-      "Implemented agile development processes",
-      "Managed partnerships with key stakeholders"
-    ],
-    achievements: [
-      {
-        metric: "App Downloads",
-        value: "100K+",
-        impact: "Achieved 100K downloads within 12 months",
-        icon: "download",
-        animationType: "counter"
-      },
-      {
-        metric: "Funding Raised",
-        value: "$2M",
-        impact: "Series A funding secured",
-        icon: "dollar-sign",
-        animationType: "counter"
-      },
-      {
-        metric: "App Store Rating",
-        value: "4.8★",
-        impact: "Consistently high user satisfaction",
-        icon: "star",
+        metric: "Drop-off Reduction",
+        value: "15%",
+        impact: "Reduced appointment drop-offs with Late Arrival Override",
+        icon: "trending-down",
         animationType: "bar"
       },
       {
-        metric: "User Retention",
-        value: "65%",
-        impact: "Day 30 retention rate",
-        icon: "users",
+        metric: "Team Velocity",
+        value: "25%",
+        impact: "Boosted team velocity over 4 sprints",
+        icon: "zap",
         animationType: "line"
       }
     ],
-    technologies: ["Figma", "Amplitude", "Firebase", "React Native", "Node.js", "MongoDB"],
+    technologies: ["HIPAA Compliance", "Healthcare APIs", "SMS/Email Systems", "Payment Processing", "Queue Management", "Agile", "Jira", "Figma"],
     environment: {
-      model: "startup-office.glb",
-      atmosphere: "creative",
-      colors: ["#1a1a2e", "#16213e", "#0f3460"]
+      model: "healthcare-office.glb",
+      atmosphere: "clinical",
+      colors: ["#0f172a", "#1e293b", "#334155"]
     },
-    transitionStory: "Moved to larger company to scale impact and work on enterprise products"
+    transitionStory: "Leading digital transformation in healthcare through patient-centric product solutions"
   },
   {
-    id: "first-role",
-    company: "DataFlow Analytics",
-    role: "Associate Product Manager",
-    duration: "2018-2020",
-    location: "San Francisco, CA",
-    type: "scale-up",
-    teamSize: 5,
+    id: "vodafone-role",
+    company: "VOIS VODAFONE",
+    role: "Product Manager",
+    duration: "Jun 2023 – Mar 2025",
+    location: "Business Operations and Transformation",
+    type: "enterprise",
+    teamSize: 12,
     responsibilities: [
-      "Contributed to 3 successful product launches",
-      "Conducted user research with 500+ participants",
-      "Improved conversion rates by 25% through A/B testing",
-      "Collaborated with engineering teams using Agile methodologies",
-      "Analyzed product metrics and user behavior data",
-      "Created product requirements and user stories"
+      "Launch Vodafone E-SIM Support System across 45+ European countries",
+      "Lead development of inventory management tool for M&A activities (Vodafone UK & Three UK)",
+      "Integrate customer feedback into agile sprints and drive data-driven prioritization",
+      "Coordinate engineering and design teams for multi-language support rollout",
+      "Conduct competitive analysis and map user journeys for product roadmap",
+      "Optimize resource allocation strategies and reduce operational redundancies"
     ],
     achievements: [
       {
-        metric: "Products Launched",
-        value: "3",
-        impact: "Successful product launches",
-        icon: "rocket",
+        metric: "European Markets",
+        value: "45+",
+        impact: "Countries covered by E-SIM support system",
+        icon: "globe",
         animationType: "counter"
       },
       {
-        metric: "Conversion Rate",
-        value: "25%",
-        impact: "Improvement through A/B testing",
+        metric: "NPS Improvement",
+        value: "8%",
+        impact: "Customer service and NPS improvement in six months",
         icon: "trending-up",
         animationType: "bar"
       },
       {
-        metric: "User Research",
-        value: "500+",
-        impact: "Participants interviewed",
-        icon: "users",
-        animationType: "counter"
+        metric: "Time-to-Market",
+        value: "10%",
+        impact: "Accelerated time-to-market through agile integration",
+        icon: "clock",
+        animationType: "bar"
       },
       {
         metric: "Feature Adoption",
-        value: "78%",
-        impact: "Average feature adoption rate",
-        icon: "check-circle",
+        value: "7%",
+        impact: "Increased feature adoption through stakeholder alignment",
+        icon: "users",
         animationType: "pie"
+      },
+      {
+        metric: "Business Value",
+        value: "€3M",
+        impact: "Created through inventory management tool for M&A",
+        icon: "dollar-sign",
+        animationType: "counter"
+      },
+      {
+        metric: "Cost Savings",
+        value: "8%",
+        impact: "Achieved through resource optimization",
+        icon: "trending-down",
+        animationType: "bar"
       }
     ],
-    technologies: ["Google Analytics", "Hotjar", "Sketch", "Jira", "Confluence", "SQL"],
+    technologies: ["E-SIM Technology", "M&A Systems", "Multi-language Support", "Agile", "Stakeholder Management", "Competitive Analysis", "Resource Optimization"],
     environment: {
-      model: "scaleup-office.glb",
-      atmosphere: "collaborative",
+      model: "telecom-office.glb",
+      atmosphere: "enterprise",
+      colors: ["#1a1a2e", "#16213e", "#0f3460"]
+    },
+    transitionStory: "Led digital transformation initiatives across European markets and M&A operations"
+  },
+  {
+    id: "oracle-role",
+    company: "Oracle India Pvt. Ltd.",
+    role: "Applications Engineer 1",
+    duration: "Jun 2019 – Jul 2021",
+    location: "Aconex – Construction and Engineering",
+    type: "enterprise",
+    teamSize: 4,
+    responsibilities: [
+      "Design and implement performance optimization features and APIs for B2B SaaS product",
+      "Lead revamp of core application components and deploy updates globally",
+      "Collaborate with 4 cross-functional teams to resolve complex technical challenges",
+      "Conceptualize and implement microservice architecture for improved scalability",
+      "Devise and execute end-to-end automated CI/CD testing strategies",
+      "Refactor legacy codebases to align with best practices and reduce technical debt"
+    ],
+    achievements: [
+      {
+        metric: "Product Efficiency",
+        value: "20%",
+        impact: "Increased enterprise SaaS product efficiency",
+        icon: "trending-up",
+        animationType: "bar"
+      },
+      {
+        metric: "User Satisfaction",
+        value: "10%",
+        impact: "Boosted user satisfaction through core component revamp",
+        icon: "smile",
+        animationType: "bar"
+      },
+      {
+        metric: "Technical Solutions",
+        value: "15",
+        impact: "Actionable technical solutions delivered",
+        icon: "wrench",
+        animationType: "counter"
+      },
+      {
+        metric: "Development Time",
+        value: "15%",
+        impact: "Reduced development time through microservice architecture",
+        icon: "clock",
+        animationType: "bar"
+      },
+      {
+        metric: "Bug Detection",
+        value: "25%",
+        impact: "Accelerated critical bug detection through CI/CD automation",
+        icon: "search",
+        animationType: "bar"
+      },
+      {
+        metric: "Technical Debt",
+        value: "10%",
+        impact: "Lowered technical debt through code refactoring",
+        icon: "trending-down",
+        animationType: "bar"
+      }
+    ],
+    technologies: ["B2B SaaS", "Microservices", "CI/CD", "API Development", "Performance Optimization", "Legacy Refactoring", "Automated Testing", "Global Deployment"],
+    environment: {
+      model: "oracle-office.glb",
+      atmosphere: "technical",
       colors: ["#2d3748", "#4a5568", "#718096"]
     },
-    transitionStory: "Joined startup to have more impact and build products from ground up"
+    transitionStory: "Built foundation in enterprise software development and technical architecture"
   }
 ]; 

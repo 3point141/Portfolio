@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Environment, OrbitControls, Text3D, Float } from '@react-three/drei';
 import * as THREE from 'three';
@@ -8,6 +8,37 @@ export function Scene() {
   const sceneRef = useRef<THREE.Group>(null);
   const particlesRef = useRef<THREE.Points>(null);
   const { performanceMode, currentSection } = usePortfolioStore();
+  const [scrollVelocity, setScrollVelocity] = useState(0);
+  const lastScrollY = useRef(0);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  // Track scroll velocity
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const velocity = Math.abs(currentScrollY - lastScrollY.current);
+      setScrollVelocity(velocity);
+      lastScrollY.current = currentScrollY;
+
+      // Clear existing timeout
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+
+      // Reset velocity after scrolling stops
+      scrollTimeout.current = setTimeout(() => {
+        setScrollVelocity(0);
+      }, 100);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+    };
+  }, []);
 
   useFrame((state) => {
     if (sceneRef.current) {
@@ -16,9 +47,11 @@ export function Scene() {
     }
 
     if (particlesRef.current) {
-      // Animate particles
-      particlesRef.current.rotation.y += 0.001;
-      particlesRef.current.rotation.x += 0.0005;
+      // Animate particles - slower when scrolling
+      const baseSpeed = 0.001;
+      const scrollMultiplier = scrollVelocity > 0 ? 0.3 : 1; // 70% slower when scrolling
+      particlesRef.current.rotation.y += baseSpeed * scrollMultiplier;
+      particlesRef.current.rotation.x += 0.0005 * scrollMultiplier;
     }
   });
 
@@ -93,10 +126,41 @@ export function Scene() {
 // Particle System Component
 function ParticleSystem({ count = 500 }: { count?: number }) {
   const particlesRef = useRef<THREE.Points>(null);
+  const [scrollVelocity, setScrollVelocity] = useState(0);
+  const lastScrollY = useRef(0);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  // Track scroll velocity for this component too
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const velocity = Math.abs(currentScrollY - lastScrollY.current);
+      setScrollVelocity(velocity);
+      lastScrollY.current = currentScrollY;
+
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+
+      scrollTimeout.current = setTimeout(() => {
+        setScrollVelocity(0);
+      }, 100);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+    };
+  }, []);
   
   useFrame((state) => {
     if (particlesRef.current) {
-      particlesRef.current.rotation.y += 0.001;
+      const baseSpeed = 0.001;
+      const scrollMultiplier = scrollVelocity > 0 ? 0.3 : 1; // 70% slower when scrolling
+      particlesRef.current.rotation.y += baseSpeed * scrollMultiplier;
     }
   });
 

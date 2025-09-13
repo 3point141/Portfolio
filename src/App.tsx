@@ -9,6 +9,7 @@ import { LoadingScreen } from './components/ui/LoadingScreen';
 import { Hero } from './components/sections/Hero';
 import { Education } from './components/sections/Education';
 import { Career } from './components/sections/Career';
+import { InternshipExperiences } from './components/sections/InternshipExperiences';
 import { Projects } from './components/sections/Projects';
 import { Skills } from './components/sections/Skills';
 import { Impact } from './components/sections/Impact';
@@ -80,7 +81,7 @@ export function App() {
   // Track scroll position for section detection
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'education', 'career', 'projects', 'skills', 'impact', 'contact'];
+      const sections = ['hero', 'education', 'career', 'internship-experiences', 'projects', 'skills', 'impact', 'contact'];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -121,6 +122,7 @@ export function App() {
         <Hero />
         <Education />
         <Career />
+        <InternshipExperiences />
         <Projects />
         <Skills />
         <Impact />
