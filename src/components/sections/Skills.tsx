@@ -87,19 +87,112 @@ function SkillNode({ position, skill, color, hoveredNode, setHoveredNode }: {
         />
       </mesh>
       
-      {/* Skill text positioned on sphere surface */}
+      {/* Skill text positioned outside sphere */}
       <Text
         ref={textRef}
-        position={[0, 0.15, 0]}
-        fontSize={0.1}
+        position={[0, 0.4, 0]}
+        fontSize={0.12}
         color="white"
         anchorX="center"
         anchorY="middle"
-        maxWidth={2}
+        maxWidth={2.5}
         opacity={isHovered ? 1 : 0.8}
+        renderOrder={1000}
+        material-transparent={true}
+        material-depthTest={false}
+        material-depthWrite={false}
       >
         {skill}
       </Text>
+    </group>
+  );
+}
+
+// Flying Astronaut Component
+function FlyingAstronaut() {
+  const astronautRef = useRef<THREE.Group>(null);
+  const threadRef = useRef<THREE.Mesh>(null);
+  
+  useFrame((state) => {
+    if (astronautRef.current) {
+      // Gentle floating animation
+      astronautRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.3;
+      astronautRef.current.position.x = Math.cos(state.clock.elapsedTime * 0.3) * 0.2;
+      astronautRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.4) * 0.1;
+    }
+    
+    if (threadRef.current) {
+      // Thread swaying animation
+      threadRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.6) * 0.05;
+    }
+  });
+
+  return (
+    <group position={[4, 2, -2]}>
+      {/* Thread */}
+      <mesh ref={threadRef} position={[0, 1, 0]}>
+        <cylinderGeometry args={[0.005, 0.005, 2, 8]} />
+        <meshStandardMaterial color="#666666" />
+      </mesh>
+      
+      {/* Astronaut */}
+      <group ref={astronautRef}>
+        {/* Helmet */}
+        <mesh position={[0, 0, 0]}>
+          <sphereGeometry args={[0.15, 16, 16]} />
+          <meshStandardMaterial 
+            color="#ffffff" 
+            transparent 
+            opacity={0.8}
+            metalness={0.3}
+            roughness={0.2}
+          />
+        </mesh>
+        
+        {/* Visor */}
+        <mesh position={[0, 0, 0.12]}>
+          <sphereGeometry args={[0.12, 16, 16]} />
+          <meshStandardMaterial 
+            color="#4A90E2" 
+            transparent 
+            opacity={0.6}
+            metalness={0.8}
+            roughness={0.1}
+          />
+        </mesh>
+        
+        {/* Body */}
+        <mesh position={[0, -0.2, 0]}>
+          <boxGeometry args={[0.2, 0.3, 0.15]} />
+          <meshStandardMaterial color="#ffffff" />
+        </mesh>
+        
+        {/* Arms */}
+        <mesh position={[-0.15, -0.15, 0]}>
+          <boxGeometry args={[0.1, 0.2, 0.1]} />
+          <meshStandardMaterial color="#ffffff" />
+        </mesh>
+        <mesh position={[0.15, -0.15, 0]}>
+          <boxGeometry args={[0.1, 0.2, 0.1]} />
+          <meshStandardMaterial color="#ffffff" />
+        </mesh>
+        
+        {/* Legs */}
+        <mesh position={[-0.06, -0.4, 0]}>
+          <boxGeometry args={[0.08, 0.2, 0.08]} />
+          <meshStandardMaterial color="#ffffff" />
+        </mesh>
+        <mesh position={[0.06, -0.4, 0]}>
+          <boxGeometry args={[0.08, 0.2, 0.08]} />
+          <meshStandardMaterial color="#ffffff" />
+        </mesh>
+        
+        {/* Backpack */}
+        <mesh position={[0, -0.2, -0.1]}>
+          <boxGeometry args={[0.15, 0.2, 0.08]} />
+          <meshStandardMaterial color="#333333" />
+        </mesh>
+      </group>
     </group>
   );
 }
@@ -121,16 +214,17 @@ function RotatingSphere({ hoveredNode, setHoveredNode }: {
 
   return (
     <group ref={groupRef}>
-      {/* Opaque Filled Sphere */}
+      {/* Completely Opaque Sphere */}
       <mesh>
         <sphereGeometry args={[2.5, 64, 64]} />
         <meshStandardMaterial 
           color="#4F46E5" // Indigo color
           transparent={false}
           opacity={1.0}
-          side={THREE.FrontSide}
+          side={THREE.DoubleSide}
           depthWrite={true}
           depthTest={true}
+          alphaTest={0}
         />
       </mesh>
       
@@ -204,6 +298,9 @@ export function Skills() {
             <ambientLight intensity={0.4} />
             <pointLight position={[10, 10, 10]} intensity={0.6} />
             <pointLight position={[-10, -10, -10]} intensity={0.3} />
+            
+            {/* Flying Astronaut */}
+            <FlyingAstronaut />
             
             {/* Rotating Sphere */}
             <RotatingSphere 
