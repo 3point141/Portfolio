@@ -6,6 +6,7 @@ import Lenis from 'lenis';
 import { usePortfolioStore } from './store/portfolioStore';
 import { Scene } from './components/layout/Scene';
 import { LoadingScreen } from './components/ui/LoadingScreen';
+import { RightNavigation } from './components/ui/RightNavigation';
 import { Hero } from './components/sections/Hero';
 import { Education } from './components/sections/Education';
 import { Career } from './components/sections/Career';
@@ -24,8 +25,7 @@ export function App() {
     isLoading, 
     setLoading, 
     setPerformanceMode, 
-    setCurrentSection,
-    trackInteraction 
+    setCurrentSection
   } = usePortfolioStore();
   
   const lenisRef = useRef<Lenis | null>(null);
@@ -117,6 +117,9 @@ export function App() {
           <Scene />
         </Canvas>
       </div>
+
+      {/* Right Navigation */}
+      <RightNavigation />
 
       {/* Main Content */}
       <div className="relative z-10">
