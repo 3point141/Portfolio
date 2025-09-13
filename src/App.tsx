@@ -12,7 +12,8 @@ import { Career } from './components/sections/Career';
 import { InternshipExperiences } from './components/sections/InternshipExperiences';
 import { Projects } from './components/sections/Projects';
 import { Skills } from './components/sections/Skills';
-import { Impact } from './components/sections/Impact';
+import { AwardsAndAchievements } from './components/sections/Impact';
+import { Recommendations } from './components/sections/Recommendations';
 import { Contact } from './components/sections/Contact';
 
 // Register GSAP plugins
@@ -81,7 +82,7 @@ export function App() {
   // Track scroll position for section detection
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'education', 'career', 'internship-experiences', 'projects', 'skills', 'impact', 'contact'];
+      const sections = ['hero', 'education', 'career', 'internship-experiences', 'projects', 'skills', 'awards', 'recommendations', 'contact'];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -125,7 +126,8 @@ export function App() {
         <InternshipExperiences />
         <Projects />
         <Skills />
-        <Impact />
+        <AwardsAndAchievements />
+        <Recommendations />
         <Contact />
       </div>
     </div>
