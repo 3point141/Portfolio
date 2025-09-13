@@ -13,9 +13,12 @@ export function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
   const greetingRef = useRef<HTMLSpanElement>(null);
   const nameRef = useRef<HTMLSpanElement>(null);
+  const photoRef = useRef<HTMLDivElement>(null);
   const taglineRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
 
   const phrases = [
     "Raw Ideas",
@@ -32,6 +35,31 @@ export function Hero() {
       trackInteraction('hero_viewed');
     }
   }, [inView, setCurrentSection, trackInteraction]);
+
+  // Mouse tracking for photo tilt effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (photoRef.current) {
+        const rect = photoRef.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const deltaX = e.clientX - centerX;
+        const deltaY = e.clientY - centerY;
+        
+        // Calculate tilt with subtle maximum angle (1.5 degrees)
+        const tiltX = Math.max(-1.5, Math.min(1.5, (deltaY / (rect.height / 2)) * 1.5));
+        const tiltY = Math.max(-1.5, Math.min(1.5, (deltaX / (rect.width / 2)) * 1.5));
+        
+        setMousePosition({ x: tiltY, y: -tiltX });
+      }
+    };
+
+    if (inView) {
+      window.addEventListener('mousemove', handleMouseMove);
+      return () => window.removeEventListener('mousemove', handleMouseMove);
+    }
+  }, [inView]);
 
   // Rotating phrases effect
   useEffect(() => {
@@ -58,6 +86,12 @@ export function Hero() {
         { opacity: 0 },
         { opacity: 1, duration: 1, ease: "power2.out" },
         "-=0.5"
+      )
+      // Photo - scale in
+      .fromTo(photoRef.current,
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.8, ease: "back.out(1.7)" },
+        "-=0.3"
       )
       // Tagline container - slide up
       .fromTo(taglineRef.current,
@@ -123,6 +157,55 @@ export function Hero() {
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
             <span ref={greetingRef} className="block text-white opacity-0">Hi, I'm</span>
             <span ref={nameRef} className="block opacity-0" style={{ color: '#FFD700', background: 'linear-gradient(135deg, #FFD700, #FFA500)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Aman Kumar.</span>
+            
+            {/* Profile Photo */}
+            <div 
+              ref={photoRef}
+              className="relative mx-auto mb-6 opacity-0"
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              {/* Halo effect - tight circle around the main circle */}
+              <div 
+                className={`absolute inset-0 rounded-full transition-all duration-500 ease-out ${
+                  isHovering ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{
+                  background: 'radial-gradient(circle, transparent 0%, transparent 75%, rgba(255, 215, 0, 0.6) 85%, rgba(255, 215, 0, 0.3) 95%, transparent 100%)',
+                  transform: 'scale(1.15)',
+                  filter: 'blur(0.5px)'
+                }}
+              />
+              <div 
+                className={`absolute inset-0 rounded-full transition-all duration-500 ease-out ${
+                  isHovering ? 'opacity-100' : 'opacity-0'
+                }`}
+                style={{
+                  background: 'radial-gradient(circle, transparent 0%, transparent 80%, rgba(255, 215, 0, 0.4) 90%, transparent 100%)',
+                  transform: 'scale(1.25)',
+                  filter: 'blur(1px)'
+                }}
+              />
+              
+              {/* Main photo container */}
+              <div 
+                className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto rounded-full overflow-hidden border-4 border-primary-500/30 shadow-2xl transition-all duration-300 ease-out relative z-10"
+                style={{
+                  transform: `perspective(1000px) rotateX(${mousePosition.y}deg) rotateY(${mousePosition.x}deg) scale(${isHovering ? 1.05 : 1})`,
+                  boxShadow: isHovering 
+                    ? '0 20px 40px rgba(255, 215, 0, 0.3), 0 0 60px rgba(255, 215, 0, 0.2)' 
+                    : '0 10px 30px rgba(0, 0, 0, 0.5)'
+                }}
+              >
+                {/* Profile photo */}
+                <img 
+                  src="/src/assets/LinkeinPhoto.png" 
+                  alt="Aman Kumar" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
             <div ref={taglineRef} className="block text-white text-4xl md:text-5xl lg:text-6xl mt-4 opacity-0">
               <div className="text-center">
                 <div className="text-center">I turn</div>
