@@ -43,8 +43,12 @@ export function Navigation() {
           <div className="flex items-center justify-between">
             {/* Logo & Branding */}
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-lg">AK</span>
+              <div className="w-12 h-12 rounded-xl overflow-hidden shadow-lg">
+                <img 
+                  src="/src/assets/LinkeinPhoto.png" 
+                  alt="Aman Kumar" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">Aman Kumar</h1>
